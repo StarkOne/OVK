@@ -26,7 +26,7 @@ gulp.task('common-js', function() {
 
 gulp.task('js', ['common-js'], function() {
 	return gulp.src([
-		'app/libs/jquery/dist/jquery.min.js',
+		'app/libs/jquery/docs/jquery.min.js',
 		'app/js/common.min.js', // Всегда в конце
 		])
 	.pipe(concat('scripts.min.js'))
@@ -65,27 +65,27 @@ gulp.task('watch', ['sass', 'js', 'browser-sync'], function() {
 gulp.task('imagemin', function() {
 	return gulp.src('app/img/**/*')
 	.pipe(cache(imagemin()))
-	.pipe(gulp.dest('dist/img')); 
+	.pipe(gulp.dest('docs/img')); 
 });
 
-gulp.task('build', ['removedist', 'imagemin', 'sass', 'js'], function() {
+gulp.task('build', ['removedocs', 'imagemin', 'sass', 'js'], function() {
 
 	var buildFiles = gulp.src([
 		'app/*.html',
 		'app/.htaccess',
-		]).pipe(gulp.dest('dist'));
+		]).pipe(gulp.dest('docs'));
 
 	var buildCss = gulp.src([
 		'app/css/main.min.css',
-		]).pipe(gulp.dest('dist/css'));
+		]).pipe(gulp.dest('docs/css'));
 
 	var buildJs = gulp.src([
 		'app/js/scripts.min.js',
-		]).pipe(gulp.dest('dist/js'));
+		]).pipe(gulp.dest('docs/js'));
 
 	var buildFonts = gulp.src([
 		'app/fonts/**/*',
-		]).pipe(gulp.dest('dist/fonts'));
+		]).pipe(gulp.dest('docs/fonts'));
 
 });
 
@@ -100,15 +100,15 @@ gulp.task('deploy', function() {
 	});
 
 	var globs = [
-	'dist/**',
-	'dist/.htaccess',
+	'docs/**',
+	'docs/.htaccess',
 	];
 	return gulp.src(globs, {buffer: false})
 	.pipe(conn.dest('/path/to/folder/on/server'));
 
 });
 
-gulp.task('removedist', function() { return del.sync('dist'); });
+gulp.task('removedocs', function() { return del.sync('docs'); });
 gulp.task('clearcache', function () { return cache.clearAll(); });
 
 gulp.task('default', ['watch']);
