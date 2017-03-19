@@ -37,6 +37,9 @@ body
 	font-family: $default-font
 	overflow-x: hidden
 	opacity: 1
+a
+	color: $accent
+	outline: none !important
 
 .img-responsive
 	display: block
@@ -48,15 +51,20 @@ h1,h2,h3,h4,h5,h6
 	font-family: $OpenSansLight
 	font-weight: normal
 h1
-	font-size: 2.688em
+	font-size: 2.563em
+	line-height: 1.2
+
+.ishome
+	h1
+		margin-top: 0
 h2
-	font-size: 2.125em
+	font-size: 2.000em
 h3,h4
 	font-family: $OpenSansSemiBold
 	text-transform: uppercase
-	font-size: 1.063em
-h4
 	font-size: 0.938em
+h4
+	font-size: 0.813em
 .hidden
 	display: none
 .main-head
@@ -64,6 +72,7 @@ h4
 	background-size: cover
 	background-position: top center
 	min-height: 100vh
+	overflow: hidden
 .mnu_line
 	padding-top: 48px
 .logo
@@ -71,7 +80,8 @@ h4
 	width: 100px
 	img
 		width: 100%
-nav
+nav,
+.header-content
 	ul
 		list-style: none
 		margin: 0
@@ -81,7 +91,7 @@ nav
 
 .main-mnu
 	text-align: center
-	font-size: 0.938em
+	font-size: 0.813em
 	> ul
 		> li
 			> a
@@ -97,6 +107,7 @@ nav
 					text-decoration: underline
 .phone
 	text-align: right
+	line-height: 1.4
 	.phone-wrap
 		color: #414a5b
 		font-family: $Exo2Bold
@@ -117,4 +128,42 @@ nav
 		&:hover
 			text-decoration: none
 			border-color: transparent
+.header-content
+	padding: 10% 0px
+	.fa-check
+		margin-right: 5px
+	ul
+		margin-top: 40px
+		li
+			display: block
+			color: #414e5b
+			text-transform: uppercase
+			font-family: $OpenSansSemiBold
+			font-size: 1.063em
+			line-height: 1.8
+	.button
+		margin-top: 50px
+	.img-responsive
+		width: 675px
+		max-width: 675px
+.button
+	display: inline-block
+	border: none
+	background-color: $btn
+	color: #fff
+	font-size: 0.875em
+	letter-spacing: 2px
+	text-transform: uppercase
+	padding: 13px 34px
+	border-radius: 3px
+	box-shadow: 0 4px 0 #0E9C4B
+	+mt(.15s)
+	&:hover, &:focus
+		color: #fff
+		text-decoration: none
+	&:hover
+		background-color: #18CB65
+	&:active
+		background-color: #0E9C4B
+		transform: translateY(2px)
 @import "media" // Всегда в конце
